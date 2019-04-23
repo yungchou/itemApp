@@ -1,0 +1,9 @@
+#
+
+*.lock
+*-lock.json
+
+# dependencies
+/node_modules
+/public/node_modules
+/server/ocnfig/x-info.js

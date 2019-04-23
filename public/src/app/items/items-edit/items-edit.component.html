@@ -1,0 +1,62 @@
+<div class='container'>
+
+  <h4>Edit an item</h4>
+      <button class="btn btn-outline-primary btn-sm m-1" type="button" [routerLink]="['']">Lists</button>
+
+  <!--  This will only display if we've received validation errors from the server -->
+  <p class='text-danger' *ngIf="editErrors">These are errors: {{ editErrors|json }}</p>
+
+  <!-- This is the variable that will be submitted, being modified in real time -->
+  <!-- <p class='text-info'>Item beingedited: {{ editedItem|json }}</p> -->
+
+  <div class='row'>
+
+  <form (submit)="updateThisItem()" class="col-6">
+    <div class="form-group">
+      <label for="name">Item Name</label>
+      <!-- ngModel is what attaches the form input to the newProduct attribute in the products-new component -->
+      <input type="text" class="form-control" id="name"
+        aria-describedby="item name" name="iname"
+        placeholder="Enter item name" [(ngModel)]="editedItem.name"
+    required
+    minlength="4"
+    maxlength="255"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="description">Item Description</label>
+      <textarea type="text" class="form-control" id="description" placeholder="Enter item description" name="idescription" [(ngModel)]="editedItem.description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Item Price</label>
+      <input type="number" class="form-control" id="price"
+        placeholder="Enter price of item" name="iprice" [(ngModel)]="editedItem.price"
+        default=0
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="image_url">Item Image URL</label>
+      <input type="text" class="form-control" id="image_url" placeholder="Enter item image url" name="image_url" [(ngModel)]="editedItem.image_url">
+    </div>
+
+    <div class="form-group">
+        <label for="buy_url">Item Buy URL</label>
+        <input type="text" class="form-control" id="buy_url" placeholder="Enter item buy url" name="buy_url" [(ngModel)]="editedItem.buy_url">
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary">Submit</button>
+  </form>
+  <div class='col-1'></div>
+  <div class='col-4'>
+    <a href="{{editedItem.buy_url}}">
+      <img class='mt-5' src="{{editedItem.image_url}}" alt='Image here'>
+    </a>
+  </div>
+  <div class='col-1'></div>
+
+  </div>
+
+</div>
